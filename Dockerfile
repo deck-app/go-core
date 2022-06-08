@@ -1,6 +1,6 @@
 FROM alpine:3.16 AS builder
 
-RUN apk add --no-cache ca-certificates
+RUN apk add --no-cache ca-certificates git curl nano
 # - docker run --rm debian:stretch grep '^hosts:' /etc/nsswitch.conf
 RUN [ ! -e /etc/nsswitch.conf ] && echo 'hosts: files dns' > /etc/nsswitch.conf
 ENV PATH /usr/local/go/bin:$PATH
