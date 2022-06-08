@@ -1,4 +1,4 @@
-FROM alpine:3.16 AS builder
+FROM alpine:3.16
 
 RUN apk add --no-cache ca-certificates git curl nano
 # - docker run --rm debian:stretch grep '^hosts:' /etc/nsswitch.conf
@@ -98,6 +98,4 @@ RUN set -eux; \
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:$PATH
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
-FROM scratch
-COPY --from=builder / /
 WORKDIR $GOPATH
